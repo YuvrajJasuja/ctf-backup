@@ -1,0 +1,354 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ url_for('views.themes', path='css/challenge-board.css') }}">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<style>
+		/* Full Page Cyber Decorations */
+		body {
+			position: relative;
+			overflow-x: hidden;
+			font-family: 'Montserrat', sans-serif;
+		}
+		
+		/* Apply Roboto to all headings */
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Roboto', sans-serif;
+		}
+		
+		/* Left Side - Full Page Height Circuit Lines */
+		.page-cyber-left {
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 250px;
+			height: 100vh;
+			pointer-events: none;
+			opacity: 0.7;
+			z-index: 999;
+		}
+		
+		.page-cyber-left svg {
+			width: 100%;
+			height: 100%;
+		}
+		
+		/* Right Side - Full Page Height Circuit Lines (Same as Left) */
+		.page-cyber-right {
+			position: fixed;
+			right: 0;
+			top: 0;
+			width: 250px;
+			height: 100vh;
+			pointer-events: none;
+			opacity: 0.7;
+			z-index: 999;
+		}
+		
+		.page-cyber-right svg {
+			width: 100%;
+			height: 100%;
+		}
+		
+		/* Circuit glow animation - Reduced to 5% shadow */
+		@keyframes circuit-glow {
+			0%, 100% {
+				opacity: 0.5;
+				filter: drop-shadow(0 0 1px rgba(0, 255, 255, 0.05));
+			}
+			50% {
+				opacity: 0.9;
+				filter: drop-shadow(0 0 2px rgba(0, 255, 255, 0.05));
+			}
+		}
+		
+		.page-cyber-left svg,
+		.page-cyber-right svg {
+			animation: circuit-glow 2.5s ease-in-out infinite;
+		}
+		
+		.cryptix-banner-section {
+			background-color: #000000;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0;
+			margin: 0;
+			margin-top: -20px;
+			max-height: 120px;
+			overflow: hidden;
+		}
+		.cryptix-banner-section img {
+			max-width: 100%;
+			width: 100%;
+			height: auto;
+			max-height: 120px;
+			display: block;
+			object-fit: contain;
+		}
+		.challenge-instructions {
+			background-color: #000000;
+			text-align: center;
+			padding: 3rem 1rem;
+			margin: 0;
+			position: relative;
+			overflow: hidden;
+			min-height: 150px;
+		}
+		.challenge-instructions h3 {
+			color: #00ffff;
+			font-size: 1.5rem;
+			font-weight: 500;
+			margin: 0;
+			text-shadow: 0 0 3px rgba(0, 255, 255, 0.05);
+			position: relative;
+			z-index: 2;
+			font-family: 'Roboto', sans-serif;
+		}
+		
+		/* Simple Button Styles - 5% Shadow Only */
+		.btn, button, input[type="submit"], .btn-primary, .btn-success, .btn-info, .btn-outline-secondary {
+			font-family: 'Montserrat', sans-serif !important;
+			box-shadow: 0 2px 4px rgba(0, 255, 255, 0.05) !important;
+			text-shadow: none !important;
+			background-image: none !important;
+			border: 1px solid rgba(0, 255, 255, 0.3) !important;
+		}
+		
+		.btn:hover, button:hover, input[type="submit"]:hover {
+			box-shadow: 0 3px 6px rgba(0, 255, 255, 0.05) !important;
+			transform: none !important;
+		}
+		
+		/* Remove all text shadows and effects from buttons */
+		.btn *, button *, input[type="submit"] * {
+			text-shadow: none !important;
+		}
+		
+		/* Remove footer border */
+		footer, .footer {
+			border-top: none !important;
+			border: none !important;
+		}
+		
+		@media (max-width: 768px) {
+			.cryptix-banner-section {
+				padding: 0;
+				max-height: 80px;
+			}
+			.cryptix-banner-section img {
+				max-height: 80px;
+			}
+			.challenge-instructions {
+				padding: 2rem 0.5rem;
+				min-height: 120px;
+			}
+			.challenge-instructions h3 {
+				font-size: 1.2rem;
+			}
+			.page-cyber-left,
+			.page-cyber-right {
+				width: 150px;
+				opacity: 0.5;
+			}
+			.page-particle {
+				width: 4px;
+				height: 4px;
+			}
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+<!-- Full Page Cyber Decorations - Left Side -->
+<div class="page-cyber-left">
+	<svg width="100%" height="100%" viewBox="0 0 250 1000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+		<!-- Top Section Circuits -->
+		<line x1="0" y1="30" x2="100" y2="30" stroke="#00ffff" stroke-width="2.5" opacity="0.8"/>
+		<circle cx="100" cy="30" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="100" y1="30" x2="100" y2="80" stroke="#00ffff" stroke-width="2.5" opacity="0.8"/>
+		<circle cx="100" cy="80" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="100" y1="80" x2="200" y2="80" stroke="#00ffff" stroke-width="2.5" opacity="0.8"/>
+		
+		<!-- Middle Section Circuits -->
+		<line x1="0" y1="150" x2="80" y2="150" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+		<circle cx="80" cy="150" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="80" y1="150" x2="80" y2="210" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+		<circle cx="80" cy="210" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="0.9s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="80" y1="210" x2="180" y2="210" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+		
+		<line x1="0" y1="300" x2="120" y2="300" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+		<circle cx="120" cy="300" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="120" y1="300" x2="120" y2="360" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+		
+		<!-- Lower Middle Section -->
+		<line x1="0" y1="450" x2="90" y2="450" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		<circle cx="90" cy="450" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="90" y1="450" x2="90" y2="520" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		<circle cx="90" cy="520" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="1.8s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="90" y1="520" x2="190" y2="520" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		
+		<!-- Bottom Section Circuits -->
+		<line x1="0" y1="650" x2="110" y2="650" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		<circle cx="110" cy="650" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="110" y1="650" x2="110" y2="720" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		
+		<line x1="0" y1="820" x2="130" y2="820" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		<circle cx="130" cy="820" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="1s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="130" y1="820" x2="130" y2="900" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		
+		<line x1="0" y1="970" x2="100" y2="970" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		<circle cx="100" cy="970" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+		</circle>
+		
+		<!-- Diagonal Connections -->
+		<line x1="40" y1="110" x2="80" y2="145" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+		<line x1="50" y1="240" x2="90" y2="280" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+		<line x1="60" y1="550" x2="100" y2="600" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+		<line x1="45" y1="750" x2="85" y2="800" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+		
+		<!-- Small Circuit Nodes -->
+		<circle cx="30" cy="60" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="50" cy="180" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="110" cy="250" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="60" cy="380" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="140" cy="480" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="70" cy="600" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="100" cy="760" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="120" cy="880" r="2.5" fill="#00ffff" opacity="0.8"/>
+	</svg>
+</div>
+
+<!-- Full Page Cyber Decorations - Right Side (Mirrored Circuit Lines) -->
+<div class="page-cyber-right">
+	<svg width="100%" height="100%" viewBox="0 0 250 1000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+		<!-- Top Section Circuits - Mirrored -->
+		<line x1="250" y1="30" x2="150" y2="30" stroke="#00ffff" stroke-width="2.5" opacity="0.8"/>
+		<circle cx="150" cy="30" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="150" y1="30" x2="150" y2="80" stroke="#00ffff" stroke-width="2.5" opacity="0.8"/>
+		<circle cx="150" cy="80" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="150" y1="80" x2="50" y2="80" stroke="#00ffff" stroke-width="2.5" opacity="0.8"/>
+		
+		<!-- Middle Section Circuits - Mirrored -->
+		<line x1="250" y1="150" x2="170" y2="150" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+		<circle cx="170" cy="150" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="170" y1="150" x2="170" y2="210" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+		<circle cx="170" cy="210" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="0.9s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="170" y1="210" x2="70" y2="210" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+		
+		<line x1="250" y1="300" x2="130" y2="300" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+		<circle cx="130" cy="300" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="130" y1="300" x2="130" y2="360" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+		
+		<!-- Lower Middle Section - Mirrored -->
+		<line x1="250" y1="450" x2="160" y2="450" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		<circle cx="160" cy="450" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="160" y1="450" x2="160" y2="520" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		<circle cx="160" cy="520" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="1.8s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="160" y1="520" x2="60" y2="520" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		
+		<!-- Bottom Section Circuits - Mirrored -->
+		<line x1="250" y1="650" x2="140" y2="650" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		<circle cx="140" cy="650" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="140" y1="650" x2="140" y2="720" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		
+		<line x1="250" y1="820" x2="120" y2="820" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		<circle cx="120" cy="820" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="1s" repeatCount="indefinite"/>
+		</circle>
+		<line x1="120" y1="820" x2="120" y2="900" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		
+		<line x1="250" y1="970" x2="150" y2="970" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+		<circle cx="150" cy="970" r="4" fill="#00ffff" opacity="1">
+			<animate attributeName="r" values="4;6;4" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+		</circle>
+		
+		<!-- Diagonal Connections - Mirrored -->
+		<line x1="210" y1="110" x2="170" y2="145" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+		<line x1="200" y1="240" x2="160" y2="280" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+		<line x1="190" y1="550" x2="150" y2="600" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+		<line x1="205" y1="750" x2="165" y2="800" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+		
+		<!-- Small Circuit Nodes - Mirrored -->
+		<circle cx="220" cy="60" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="200" cy="180" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="140" cy="250" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="190" cy="380" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="110" cy="480" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="180" cy="600" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="150" cy="760" r="2.5" fill="#00ffff" opacity="0.8"/>
+		<circle cx="130" cy="880" r="2.5" fill="#00ffff" opacity="0.8"/>
+	</svg>
+</div>
+
+<div class="cryptix-banner-section">
+	<img src="{{ url_for('views.themes', path='img/cryptix-banner.jpg') }}" alt="CRYPTIX">
+</div>
+
+<div class="challenge-instructions">
+	<h3>Solve the below questions to get points</h3>
+</div>
+
+<div class="modal fade" id="challenge-window" tabindex="-1" role="dialog">
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			{% include "components/errors.html" %}
+		</div>
+	</div>
+
+	<div id='challenges-board'>
+		<div class="min-vh-50 d-flex align-items-center">
+			<div class="text-center w-100">
+				<i class="fas fa-circle-notch fa-spin fa-3x fa-fw spinner"></i>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block entrypoint %}
+	<script defer src="{{ url_for('views.themes', path='js/pages/challenges.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    //basehtml
+    <title>{{ Configs.ctf_name }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ Configs.ctf_small_icon }}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="{{ url_for('views.themes', path='css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('views.themes', path='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('views.themes', path='css/core.css') }}">
+    <link rel="stylesheet" href="{{ url_for('views.themes', path='css/no-shadows.css') }}">
+    <link rel="stylesheet" href="{{ url_for('views.themes', path='css/reduced-glow.css') }}">
+    <link rel="stylesheet" href="{{ url_for('views.themes', path='css/override.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    {% block stylesheets %}
+    {% endblock %}
+
+    {{ Plugins.styles }}
+    <script type="text/javascript">
+        var init = {
+            'urlRoot': "{{ request.script_root }}",
+            'csrfNonce': "{{ Session.nonce }}",
+            'userMode': "{{ Configs.user_mode }}",
+            'userId': {{ Session.id }},
+            'start': {{ Configs.start | tojson }},
+            'end': {{ Configs.end | tojson }},
+            'theme_settings': {{ Configs.theme_settings | tojson }}
+        }
+    </script>
+    {{ Configs.theme_header }}
+</head>
+<body>
+    <!-- Full Page Cyber Decorations - Left Side -->
+    <div class="page-cyber-left">
+        <svg width="100%" height="100%" viewBox="0 0 250 1000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <!-- Top Section Circuits -->
+            <line x1="0" y1="30" x2="100" y2="30" stroke="#00ffff" stroke-width="2.5" opacity="0.8"/>
+            <circle cx="100" cy="30" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="100" y1="30" x2="100" y2="80" stroke="#00ffff" stroke-width="2.5" opacity="0.8"/>
+            <circle cx="100" cy="80" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="100" y1="80" x2="200" y2="80" stroke="#00ffff" stroke-width="2.5" opacity="0.8"/>
+            
+            <!-- Middle Section Circuits -->
+            <line x1="0" y1="150" x2="80" y2="150" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+            <circle cx="80" cy="150" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="80" y1="150" x2="80" y2="210" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+            <circle cx="80" cy="210" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="0.9s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="80" y1="210" x2="180" y2="210" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+            
+            <line x1="0" y1="300" x2="120" y2="300" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+            <circle cx="120" cy="300" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="120" y1="300" x2="120" y2="360" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+            
+            <!-- Lower Middle Section -->
+            <line x1="0" y1="450" x2="90" y2="450" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            <circle cx="90" cy="450" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="90" y1="450" x2="90" y2="520" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            <circle cx="90" cy="520" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="1.8s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="90" y1="520" x2="190" y2="520" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            
+            <!-- Bottom Section Circuits -->
+            <line x1="0" y1="650" x2="110" y2="650" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            <circle cx="110" cy="650" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="110" y1="650" x2="110" y2="720" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            
+            <line x1="0" y1="820" x2="130" y2="820" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            <circle cx="130" cy="820" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="1s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="130" y1="820" x2="130" y2="900" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            
+            <line x1="0" y1="970" x2="100" y2="970" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            <circle cx="100" cy="970" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Diagonal Connections -->
+            <line x1="40" y1="110" x2="80" y2="145" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+            <line x1="50" y1="240" x2="90" y2="280" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+            <line x1="60" y1="550" x2="100" y2="600" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+            <line x1="45" y1="750" x2="85" y2="800" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+            
+            <!-- Small Circuit Nodes -->
+            <circle cx="30" cy="60" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="50" cy="180" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="110" cy="250" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="60" cy="380" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="140" cy="480" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="70" cy="600" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="100" cy="760" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="120" cy="880" r="2.5" fill="#00ffff" opacity="0.8"/>
+        </svg>
+    </div>
+
+    <!-- Full Page Cyber Decorations - Right Side (Mirrored) -->
+    <div class="page-cyber-right">
+        <svg width="100%" height="100%" viewBox="0 0 250 1000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <!-- Top Section Circuits - Mirrored -->
+            <line x1="250" y1="30" x2="150" y2="30" stroke="#00ffff" stroke-width="2.5" opacity="0.8"/>
+            <circle cx="150" cy="30" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="150" y1="30" x2="150" y2="80" stroke="#00ffff" stroke-width="2.5" opacity="0.8"/>
+            <circle cx="150" cy="80" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="150" y1="80" x2="50" y2="80" stroke="#00ffff" stroke-width="2.5" opacity="0.8"/>
+            
+            <!-- Middle Section Circuits - Mirrored -->
+            <line x1="250" y1="150" x2="170" y2="150" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+            <circle cx="170" cy="150" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="170" y1="150" x2="170" y2="210" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+            <circle cx="170" cy="210" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="0.9s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="170" y1="210" x2="70" y2="210" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+            
+            <line x1="250" y1="300" x2="130" y2="300" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+            <circle cx="130" cy="300" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="130" y1="300" x2="130" y2="360" stroke="#00ffff" stroke-width="2.5" opacity="0.7"/>
+            
+            <!-- Lower Middle Section - Mirrored -->
+            <line x1="250" y1="450" x2="160" y2="450" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            <circle cx="160" cy="450" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="160" y1="450" x2="160" y2="520" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            <circle cx="160" cy="520" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="1.8s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="160" y1="520" x2="60" y2="520" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            
+            <!-- Bottom Section Circuits - Mirrored -->
+            <line x1="250" y1="650" x2="140" y2="650" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            <circle cx="140" cy="650" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="140" y1="650" x2="140" y2="720" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            
+            <line x1="250" y1="820" x2="120" y2="820" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            <circle cx="120" cy="820" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="1s" repeatCount="indefinite"/>
+            </circle>
+            <line x1="120" y1="820" x2="120" y2="900" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            
+            <line x1="250" y1="970" x2="150" y2="970" stroke="#00ffff" stroke-width="2.5" opacity="0.6"/>
+            <circle cx="150" cy="970" r="4" fill="#00ffff" opacity="1">
+                <animate attributeName="r" values="4;6;4" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Diagonal Connections - Mirrored -->
+            <line x1="210" y1="110" x2="170" y2="145" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+            <line x1="200" y1="240" x2="160" y2="280" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+            <line x1="190" y1="550" x2="150" y2="600" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+            <line x1="205" y1="750" x2="165" y2="800" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+            
+            <!-- Small Circuit Nodes - Mirrored -->
+            <circle cx="220" cy="60" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="200" cy="180" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="140" cy="250" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="190" cy="380" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="110" cy="480" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="180" cy="600" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="150" cy="760" r="2.5" fill="#00ffff" opacity="0.8"/>
+            <circle cx="130" cy="880" r="2.5" fill="#00ffff" opacity="0.8"/>
+        </svg>
+    </div>
+
+    {% include "components/navbar.html" %}
+
+    <main role="main">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container flex-box text-center">
+            <small class="text-muted"></small>
+        </div>
+    </footer>
+
+    <script defer src="{{ url_for('views.themes', path='js/vendor.bundle.js') }}"></script>
+    <script defer src="{{ url_for('views.themes', path='js/core.js') }}"></script>
+    <script defer src="{{ url_for('views.themes', path='js/helpers.js') }}"></script>
+
+    {% block entrypoint %}
+    <script defer src="{{ url_for('views.themes', path='js/pages/main.js') }}"></script>
+    {% endblock %}
+
+    {% block scripts %}
+    {% endblock %}
+
+    {{ Plugins.scripts }}
+
+    {{ Configs.theme_footer }}
+</body>
+</html>

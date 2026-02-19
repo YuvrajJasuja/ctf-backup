@@ -1,0 +1,39 @@
+/* Custom CSS to reduce glow effects */
+
+/* Reduce button glow on all states */
+.btn,
+.btn:focus,
+.btn:active,
+.btn:hover,
+.btn-success,
+.btn-success:focus,
+.btn-success:active,
+.btn-success:hover,
+.btn-primary,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:hover,
+button,
+button:focus,
+button:active,
+button:hover {
+    box-shadow: none !important;
+    outline: none !important;
+    text-shadow: none !important;
+}
+
+/* Minimal glow for focused buttons (subtle) */
+.btn:focus,
+.btn-success:focus,
+.btn-primary:focus,
+button:focus {
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Remove reflection/glow effect from buttons */
+.btn::before,
+.btn::after,
+button::before,
+button::after {
+    box-shadow: none !important;
+}
