@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<div class="auth-box">
+				<img src="{{ url_for('views.themes', path='img/cryptix_logo_final.png') }}" alt="Cryptix Logo"
+					class="auth-logo">
+				<h1 class="text-center mb-4">Team Enrollment</h1>
+
+				<div class="text-center mb-4 text-muted">
+					<p>Welcome to {{ Configs.ctf_name }}!</p>
+					<p>In order to participate you must either join or create a team.</p>
+				</div>
+
+				{% if integrations.mlc() %}
+				<div class="row mb-3">
+					<div class="col-md-12 text-center">
+						<a class="btn btn-primary w-100" href="{{ url_for('auth.oauth_login') }}">Play with Official
+							Team</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-2">
+						<a class="btn btn-outline-light w-100" href="{{ url_for('teams.join') }}">Join Unofficial
+							Team</a>
+					</div>
+					<div class="col-md-6 mb-2">
+						<a class="btn btn-outline-light w-100" href="{{ url_for('teams.new') }}">Create Unofficial
+							Team</a>
+					</div>
+				</div>
+				{% else %}
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<a class="btn btn-primary w-100 py-2" href="{{ url_for('teams.join') }}">Join Team</a>
+					</div>
+					<div class="col-md-6 mb-3">
+						<a class="btn btn-success w-100 py-2" href="{{ url_for('teams.new') }}">Create Team</a>
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
