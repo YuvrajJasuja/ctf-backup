@@ -1,0 +1,32 @@
+/* ==============================
+   FONT AWESOME (OFFLINE)
+================================= */
+
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+$fa-font-display: swap;
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+
+/* ==============================
+   ROBOTO (OFFLINE via npm)
+================================= */
+
+@import "~typeface-roboto/index.css";
+
+
+/* ==============================
+   GLOBAL TYPOGRAPHY
+================================= */
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+}

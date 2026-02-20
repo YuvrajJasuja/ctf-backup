@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 70px); background-color: #0a0a0a;">
+    <div class="text-center">
+        <img src="{{ url_for('views.themes', path='img/cryptix_logo_final.png') }}"
+             alt="CRYPTIX"
+             style="max-width: 700px; width: 90vw; height: auto;">
+        {% if not authed() %}
+        <div class="mt-4">
+            <a href="{{ url_for('auth.login') }}" class="btn btn-outline-info btn-lg mx-2">
+                <i class="fas fa-sign-in-alt pr-1"></i>Login
+            </a>
+            {% if registration_visible() %}
+            <a href="{{ url_for('auth.register') }}" class="btn btn-outline-info btn-lg mx-2">
+                <i class="fas fa-user-plus pr-1"></i>Register
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
